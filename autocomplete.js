@@ -1,7 +1,7 @@
 import { debounce } from '/utils.js';
 import { fetchData, onMovieSelect } from '/index.js';
 
-const createAutoComplete = ({ root, renderOption }) => {
+const createAutoComplete = ({ root, renderOption, onOptionSelect, inputValue }) => {
   root.innerHTML = `
   <label><b>Search For a Movie</b></label>
   <input class="input" />
@@ -33,8 +33,8 @@ const createAutoComplete = ({ root, renderOption }) => {
       option.innerHTML = renderOption(movie);
       option.addEventListener('click', () => {
         dropdown.classList.remove('is-active');
-        input.value = movie.Title;
-        onMovieSelect(movie);
+        input.value = inputValue(movie);
+        onOptionSelect(movie);
       });
 
       resultsWrapper.appendChild(option);
