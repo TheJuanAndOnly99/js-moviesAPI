@@ -2,8 +2,7 @@ import { createAutoComplete } from '/autocomplete.js';
 
 const url = 'http://www.omdbapi.com/?apikey=[3c1d3d86]&';
 
-createAutoComplete({
-  root           : document.querySelector('.autocomplete'),
+const autoCompleteConfig = {
   renderOption(movie) {
     const imgSrc = movie.Poster === 'N/A' ? '' : movie.Poster;
     return `
@@ -31,6 +30,16 @@ createAutoComplete({
 
     return response.data.Search;
   }
+};
+
+createAutoComplete({
+  ...autoCompleteConfig,
+  root : document.querySelector('#left-autocomplete')
+});
+
+createAutoComplete({
+  ...autoCompleteConfig,
+  root : document.querySelector('#right-autocomplete')
 });
 
 const onMovieSelect = async (movie) => {
