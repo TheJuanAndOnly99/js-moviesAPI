@@ -1,5 +1,3 @@
-import { debounce } from '/utils.js';
-
 const createAutoComplete = ({ root, renderOption, onOptionSelect, inputValue, fetchData }) => {
   root.innerHTML = `
   <label><b>Search</b></label>
@@ -48,5 +46,3 @@ const createAutoComplete = ({ root, renderOption, onOptionSelect, inputValue, fe
     }
   });
 };
-
-export { createAutoComplete };
